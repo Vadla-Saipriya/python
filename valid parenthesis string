@@ -1,0 +1,21 @@
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        mino,maxo=0,0
+        for c in s:
+            if c=='(':
+                mino+=1
+                maxo+=1
+            elif c==')':
+                mino-=1
+                maxo-=1
+            elif c=='*':
+                mino-=1
+                maxo+=1
+            if mino<0:
+                mino=0
+            if maxo<0:
+                return False
+        return mino==0
+
+
+        
