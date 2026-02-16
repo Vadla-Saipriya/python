@@ -1,0 +1,16 @@
+class Solution(object):
+    def trap(self, height):
+        n=len(height)
+        leftmax=rightmax=water=0
+        l=0
+        r=n-1
+        while l<r:
+            if height[l]<height[r]:
+                water+=max(0,leftmax-height[l])
+                leftmax=(max(leftmax,height[l]))
+                l+=1
+            else:
+                water+=max(0,rightmax-height[r])
+                rightmax=(max(rightmax,height[r]))
+                r-=1
+        return water
