@@ -1,0 +1,26 @@
+class Solution:
+    def canPartitionGrid(self, grid: List[List[int]]) -> bool:
+        x=[]
+        for i in grid:
+            x.append(sum(i))
+        total=sum(x)
+        if total%2!=0:
+            return False
+        target=total//2
+        ctr=0
+        for i in range(len(x)-1):
+            ctr+=x[i]
+            if ctr==target:
+                return True
+        n=len(grid[0])
+        col=[0]*n
+        for j in range(n):
+            for i in range(len(grid)):
+                col[j]+=grid[i][j]
+        ctr=0
+        for j in range(n-1):
+            ctr+=col[j]
+            if ctr==target:
+                return True
+
+        return False
